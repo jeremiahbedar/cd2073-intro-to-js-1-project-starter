@@ -93,7 +93,9 @@ function cartTotal() {
   return totalCost;
 }
 /* Create a function called emptyCart that empties the products from the cart */
-
+function emptyCart() {
+  cart = [];
+}
 /* Create a function named pay that takes in an amount as an argument
   - amount is the money paid by customer
   - pay will return a negative number if there is a remaining balance
