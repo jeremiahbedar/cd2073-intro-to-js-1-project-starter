@@ -76,6 +76,7 @@ function decreaseQuantity(productId) {
 */
 function removeProductFromCart(productId) {
     let productIndex = cart.indexOf(products[productId]);
+    products[productId].quantity = 0;
     cart.splice(productIndex, 1);
 }
 
