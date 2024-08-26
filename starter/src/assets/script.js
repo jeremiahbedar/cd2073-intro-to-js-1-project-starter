@@ -30,7 +30,7 @@ const strawberry = {
   image: "images/strawberry.jpg"
 }
 
-
+products.push(cherry, orange, strawberry);
 /* Images provided in /images folder. All images from Unsplash.com
    - cherry.jpg by Mae Mu
    - orange.jpg by Mae Mu
