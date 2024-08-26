@@ -102,7 +102,13 @@ function emptyCart() {
   - pay will return a positive number if money should be returned to customer
   Hint: cartTotal function gives us cost of all the products in the cart  
 */
-
+function pay(amount) {
+  if (cartTotal() < amount) {
+    return cartTotal - amount;
+  } else if (cartTotal() > amount) {
+    return amount - cartTotal;
+  }
+}
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
 
