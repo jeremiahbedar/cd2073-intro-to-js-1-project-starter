@@ -65,9 +65,10 @@ function increaseQuantity(productId) {
   - if the function decreases the quantity to 0, the product is removed from the cart
 */
 function decreaseQuantity(productId) {
-  products[productId].quantity -= 1;
-  if (products[productId].quantity === 0) {
-    let productIndex = cart.indexOf(products[productId]);
+  const selectedProduct = products.filter(product => product.productId === productId)[0];
+  selectedProduct.quantity -= 1;
+  if (selectedProduct.quantity === 0) {
+    let productIndex = cart.indexOf(selectedProduct);
     cart.splice(productIndex, 1);
   }
 }
