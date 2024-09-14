@@ -53,10 +53,11 @@ function getProductFromList(productId, productList) {
 
 function addProductToCart(productId) {
   const selectedProduct = getProductFromList(productId, products);
-  if (!cart.includes(selectedProduct)) {
-    cart.push(selectedProduct);
+  if (!cart.includes(selectedProduct)) { 
+    // if cart doesn't include item, add to cart
+    cart.push(selectedProduct); // 
   }
-  selectedProduct.quantity += 1;
+  selectedProduct.quantity += 1; 
 }
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
@@ -85,6 +86,9 @@ function decreaseQuantity(productId) {
   - removeProductFromCart should remove the product from the cart
 */
 function removeProductFromCart(productId) {
+  // find product from list by index
+  // set the quantity to 0
+  // remove item from cart
   const selectedProduct = getProductFromList(productId, cart);
   let productIndex = cart.indexOf(selectedProduct);
   selectedProduct.quantity = 0;
@@ -97,11 +101,12 @@ function removeProductFromCart(productId) {
   Hint: price and quantity can be used to determine total cost
 */
 function cartTotal() {
+  // iterate over every item in cart, adding price per items
   let totalCost = 0;
   for (let i = 0; i < cart.length; i++) {
     totalCost += (cart[i].price * cart[i].quantity);
   }
-  return totalCost.toFixed(2); // returns cart Total with 2 decimal point precision
+  return Number(totalCost.toFixed(2)); // returns cart Total with 2 decimal point precision
 }
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart() {
@@ -113,13 +118,21 @@ function emptyCart() {
   - pay will return a positive number if money should be returned to customer
   Hint: cartTotal function gives us cost of all the products in the cart  
 */
+
+let totalPaid = 0; // tracks amount of money paid 
+
 function pay(amount) {
-  let finalAmount = amount - cartTotal();
-  if (amount > cartTotal()) {
-    return (finalAmount.toFixed(2));
-  } else if (amount < cartTotal()) {
-    return (finalAmount.toFixed(2));
+  // adds amount paid to total paid
+  totalPaid += amount;
+  console.log(totalPaid);
+  let remainingToPay = totalPaid - cartTotal(); // tracks money left to pay
+  if (remainingToPay >= 0) { // if money left to pay is greater than or equal to 0
+    totalPaid = 0;
+    emptyCart(); // clear cart
   }
+
+  return Number(remainingToPay.toFixed(2));
+
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
 
